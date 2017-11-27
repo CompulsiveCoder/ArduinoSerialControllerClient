@@ -3,11 +3,11 @@ DIR=$PWD
 echo "Initializing ArduinoSerialControllerClient project"
 echo "Dir: $PWD"
 
-cd lib
-sh get-libs.sh
-cd $DIR
-
-cd lib/duinocom && \
+cd lib/duinocom.core && \
 sh init.sh && \
-sh build.sh && \ # Build here so it only needs to happen once
+sh build.sh && \
+cd $DIR && \
+
+cd lib && \
+sh get-libs.sh && \
 cd $DIR
