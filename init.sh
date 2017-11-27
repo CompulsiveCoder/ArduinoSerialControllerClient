@@ -1,6 +1,6 @@
 DIR=$PWD
 
-echo "Initializing project"
+echo "Initializing ArduinoSerialControllerClient project"
 echo "Dir: $PWD"
 
 cd lib
