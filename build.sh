@@ -1,4 +1,4 @@
-echo "Starting build for project"
+echo "Starting build for ArduinoSerialControllerClient project"
 echo "Dir: $PWD"
 
 MODE=$1
