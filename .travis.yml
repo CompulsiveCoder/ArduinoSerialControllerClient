@@ -2,8 +2,9 @@ sudo: required
 
 language: csharp
 
-services:
-- docker
+install:
+- sudo sh prepare.sh
+- sh init.sh
 
 script:
 - sh build.sh
