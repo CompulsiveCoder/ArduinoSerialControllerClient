@@ -9,4 +9,4 @@ fi
 
 echo "Mode: $MODE"
 
-xbuild src/ArduinoSerialControllerClient.sln /p:Configuration=$MODE
+msbuild src/ArduinoSerialControllerClient.sln /p:Configuration=$MODE
