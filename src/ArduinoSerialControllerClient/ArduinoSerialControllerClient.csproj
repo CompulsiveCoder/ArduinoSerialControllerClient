@@ -29,8 +29,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="duinocom">
-      <HintPath>..\..\lib\duinocom\bin\Release\duinocom.dll</HintPath>
+    <Reference Include="duinocom.core">
+      <HintPath>..\..\lib\duinocom.core\bin\Release\duinocom.core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

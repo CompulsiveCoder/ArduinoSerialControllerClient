@@ -5,25 +5,25 @@ namespace ArduinoSerialControllerClient
 {
     public class ArduinoSerialDevice
     {
-        public DuinoCommunicator Communicator;
+        public SerialClient Client;
         
         public bool IsConnected = false;
         
         public ArduinoSerialDevice(string portName, int baudRate)
         {
-            Communicator = new DuinoCommunicator(portName, baudRate);
+            Client = new SerialClient(portName, baudRate);
         }
         
         public void Connect()
         {
-            Communicator.Open();
+            Client.Open();
             
             IsConnected = true;
         }
         
         public void Disconnect()
         {
-            Communicator.Close();
+            Client.Close();
             
             IsConnected = false;
         }
@@ -42,14 +42,14 @@ namespace ArduinoSerialControllerClient
         {
             var cmd = String.Format("A{0}:{1}", pinNumber, value);
             
-            Communicator.Send(cmd);
+            Client.Write(cmd);
         }
         
         public void AnalogWrite(int pinNumber, int value)
         {
             var cmd = String.Format("A{0}:{1}", pinNumber, value);
             
-            Communicator.Send(cmd);
+            Client.Write(cmd);
         }
         
         public void AnalogWritePercentage(int pinNumber, int value)
@@ -66,7 +66,7 @@ namespace ArduinoSerialControllerClient
             
             Console.WriteLine("Sending command: " + cmd);
             
-            Communicator.Send(cmd);
+            Client.Write(cmd);
         }
         
         public void CheckConnected()
