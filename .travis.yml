@@ -1,0 +1,10 @@
+sudo: required
+
+language: csharp
+
+services:
+- docker
+
+script:
+- sh build.sh
+
