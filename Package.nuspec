@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ArduinoSerialControllerClient</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>compulsivecoder</authors>
     <owners>compulsivecoder</owners>
     <projectUrl>https://github.com/CompulsiveCoder/ArduinoSerialControllerClient</projectUrl>
