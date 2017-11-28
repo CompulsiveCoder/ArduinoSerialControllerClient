@@ -1,7 +1,7 @@
 echo "Preparing for ArduinoSerialControllerClient project"
 echo "Dir: $PWD"
 
-git submodule update --init
+git submodule update --init && \
 
 DIR=$PWD
 
