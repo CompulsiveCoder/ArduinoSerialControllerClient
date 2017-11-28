@@ -10,6 +10,7 @@ NUGET_FILE="nuget.exe"
 if [ ! -f "$NUGET_FILE" ];
 then
     wget http://nuget.org/nuget.exe
+    mono nuget.exe update -self
 fi
 
 if [ ! -d "duinocom.core.1.0.0" ]; then
