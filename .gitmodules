@@ -1,3 +1,6 @@
 [submodule "lib/duinocom"]
 	path = lib/duinocom
 	url = https://github.com/CompulsiveCoder/duinocom.git
+[submodule "lib/duinocom.core"]
+	path = lib/duinocom.core
+	url = https://github.com/CompulsiveCoder/duinocom.core.git
