@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoSerialControllerClient", "ArduinoSerialControllerClient\ArduinoSerialControllerClient.csproj", "{21b4d2a3-eb27-493b-85c9-91f8b0245885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArduinoSerialControllerClient.Tests", "ArduinoSerialControllerClient.Tests\ArduinoSerialControllerClient.Tests.csproj", "{80145a5f-697a-4cdb-9741-98d361e232e3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,12 +13,5 @@ Global
 		{21b4d2a3-eb27-493b-85c9-91f8b0245885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21b4d2a3-eb27-493b-85c9-91f8b0245885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21b4d2a3-eb27-493b-85c9-91f8b0245885}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80145a5f-697a-4cdb-9741-98d361e232e3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80145a5f-697a-4cdb-9741-98d361e232e3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80145a5f-697a-4cdb-9741-98d361e232e3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80145a5f-697a-4cdb-9741-98d361e232e3}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = duinocomConsole\duinocomConsole.csproj
 	EndGlobalSection
 EndGlobal

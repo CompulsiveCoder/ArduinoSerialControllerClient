@@ -1,8 +1,6 @@
 echo "Preparing for ArduinoSerialControllerClient project"
 echo "Dir: $PWD"
 
-git submodule update --init
-
 DIR=$PWD
 
 sudo apt-get update
@@ -21,7 +19,3 @@ if ! type "mono" > /dev/null; then
 
   sudo apt-get install -y mono-devel mono-complete
 fi
-
-cd lib/duinocom.core && \
-sudo sh prepare.sh && \
-cd $DIR

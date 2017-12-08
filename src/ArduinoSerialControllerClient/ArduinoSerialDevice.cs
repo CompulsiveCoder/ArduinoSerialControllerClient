@@ -42,14 +42,14 @@ namespace ArduinoSerialControllerClient
         {
             var cmd = String.Format("A{0}:{1}", pinNumber, value);
             
-            Client.Write(cmd);
+            Client.WriteLine(cmd);
         }
         
         public void AnalogWrite(int pinNumber, int value)
         {
             var cmd = String.Format("A{0}:{1}", pinNumber, value);
             
-            Client.Write(cmd);
+            Client.WriteLine(cmd);
         }
         
         public void AnalogWritePercentage(int pinNumber, int value)
@@ -66,7 +66,7 @@ namespace ArduinoSerialControllerClient
             
             Console.WriteLine("Sending command: " + cmd);
             
-            Client.Write(cmd);
+            Client.WriteLine(cmd);
         }
         
         public void CheckConnected()

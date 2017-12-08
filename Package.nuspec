@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ArduinoSerialControllerClient</id>
+    <version>1.0.3</version>
+    <authors>compulsivecoder</authors>
+    <owners>compulsivecoder</owners>
+    <projectUrl>https://github.com/CompulsiveCoder/ArduinoSerialControllerClient</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An arduino serial controller library.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>arduino iot</tags>
+    <dependencies>
+        <dependency id="duinocom.core" version="1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+      <file src="bin/Release/**" target="lib/net40" />
+  </files>
+</package>
