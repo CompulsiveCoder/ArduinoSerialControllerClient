@@ -30,7 +30,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="duinocom.core">
-      <HintPath>..\..\lib\duinocom.core.1.0.2\lib\Release\duinocom.core.dll</HintPath>
+      <HintPath>..\..\lib\duinocom.core.1.0.4\lib\net40\duinocom.core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

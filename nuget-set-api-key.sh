@@ -1,1 +1,2 @@
-mono lib/nuget.exe setApiKey $1
+cd lib
+mono nuget.exe setApiKey $1
