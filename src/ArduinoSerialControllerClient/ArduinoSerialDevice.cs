@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using duinocom;
 
 namespace ArduinoSerialControllerClient
@@ -28,14 +29,34 @@ namespace ArduinoSerialControllerClient
             IsConnected = false;
         }
         
-        public int DigitalRead(int pinNumber)
+        public bool DigitalRead(int pinNumber)
         {
-            throw new NotImplementedException();
+            var cmd = String.Format("D{0}:R", pinNumber);
+            
+            Client.WriteLine(cmd);
+
+            Thread.Sleep(1000);
+
+            var output = Client.Read();
+
+            var digitalValue = Convert.ToInt32(output.Trim()) == 1;
+
+            return digitalValue;
         }
         
         public int AnalogRead(int pinNumber)
         {
-            throw new NotImplementedException();
+            var cmd = String.Format("A{0}:R", pinNumber);
+            
+            Client.WriteLine(cmd);
+
+            Thread.Sleep(1000);
+
+            var output = Client.Read();
+
+            var analogValue = Convert.ToInt32(output.Trim());
+
+            return analogValue;
         }
         
         public void DigitalWrite(int pinNumber, bool value)
