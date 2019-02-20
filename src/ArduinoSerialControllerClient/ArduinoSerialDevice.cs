@@ -89,6 +89,22 @@ namespace ArduinoSerialControllerClient
             
             Client.WriteLine(cmd);
         }
+
+		public void PinMode(int pinNumber, PinMode pinMode)
+		{
+			CheckConnected();
+
+			Console.WriteLine ("Setting pin mode...");
+			Console.WriteLine ("  Pin number: " + pinNumber);
+			Console.WriteLine ("  Pin mode: " + pinMode.ToString());
+
+			var cmd = String.Format("M{0}:{1}", pinNumber, (int)pinMode);
+
+			Console.WriteLine("Sending command: " + cmd);
+
+			Client.WriteLine(cmd);
+			
+		}
         
         public void CheckConnected()
         {
