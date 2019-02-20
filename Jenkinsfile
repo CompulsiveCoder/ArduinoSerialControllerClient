@@ -7,11 +7,16 @@ pipeline {
         disableConcurrentBuilds();
     }
     stages {
+        stage('CleanWS') {
+            steps {
+                deleteDir()
+            }
+        }
         stage('Checkout') {
             steps {
                 checkout scm
                 
-                shHide( 'git remote set-url origin https://${GHTOKEN}@github.com/CompulsiveCoder/ArduinoSerialController.git' )
+                shHide( 'git remote set-url origin https://${GHTOKEN}@github.com/CompulsiveCoder/ArduinoSerialControllerClient.git' )
                 sh "git config --add remote.origin.fetch +refs/heads/master:refs/remotes/origin/master"
                 sh "git fetch --no-tags"
                 sh 'git checkout $BRANCH_NAME'
