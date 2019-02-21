@@ -4,13 +4,13 @@ using duinocom;
 
 namespace ArduinoSerialControllerClient
 {
-    public class ArduinoSerialDevice
+    public class ArduinoSerialDevice2
     {
         public SerialClient Client;
-
+        
         public bool IsConnected = false;
 
-        public ArduinoSerialDevice (string portName, int baudRate)
+        public ArduinoSerialDevice2 (string portName, int baudRate)
         {
             Client = new SerialClient (portName, baudRate);
         }
@@ -18,43 +18,43 @@ namespace ArduinoSerialControllerClient
         public void Connect ()
         {
             Client.Open ();
-
+            
             IsConnected = true;
         }
 
         public void Disconnect ()
         {
             Client.Close ();
-
+            
             IsConnected = false;
         }
 
         public bool DigitalRead (int pinNumber)
         {
             var cmd = String.Format ("D{0}:R", pinNumber);
-
+            
             Client.WriteLine (cmd);
 
-            var output = Client.ReadLine ().Trim ();
+            Thread.Sleep (1000);
 
-            var digitalValue = 0;
-            if (!Int32.TryParse (output, out digitalValue))
-                throw new Exception ("Failed to convert digital pin value: " + output);
+            var output = Client.Read ();
 
-            return digitalValue == 1;
+            var digitalValue = Convert.ToInt32 (output.Trim ()) == 1;
+
+            return digitalValue;
         }
 
         public int AnalogRead (int pinNumber)
         {
             var cmd = String.Format ("A{0}:R", pinNumber);
-
+            
             Client.WriteLine (cmd);
 
-            var output = Client.ReadLine ().Trim ();
+            Thread.Sleep (1000);
 
-            var analogValue = 0;
-            if (!Int32.TryParse (output, out analogValue))
-                throw new Exception ("Failed to convert analog pin value: " + output);
+            var output = Client.Read ();
+
+            var analogValue = Convert.ToInt32 (output.Trim ());
 
             return analogValue;
         }
@@ -62,27 +62,27 @@ namespace ArduinoSerialControllerClient
         public void DigitalWrite (int pinNumber, bool value)
         {
             var cmd = String.Format ("A{0}:{1}", pinNumber, value);
-
+            
             Client.WriteLine (cmd);
         }
 
         public void AnalogWrite (int pinNumber, int value)
         {
             var cmd = String.Format ("A{0}:{1}", pinNumber, value);
-
+            
             Client.WriteLine (cmd);
         }
 
         public void AnalogWritePercentage (int pinNumber, int value)
         {
             CheckConnected ();
-
+            
             Console.WriteLine ("Analog writing percentage: " + value);
-
+            
             var pwmValue = ArduinoConvert.PercentageToPWM (value);
-
+            
             Console.WriteLine ("Converted PWM value: " + pwmValue);
-
+            
             var cmd = String.Format ("A{0}:{1}", pinNumber, pwmValue);
             
             Console.WriteLine ("Sending command: " + cmd);
@@ -100,10 +100,10 @@ namespace ArduinoSerialControllerClient
 
             var cmd = String.Format ("M{0}:{1}", pinNumber, (int)pinMode);
 
+
             Console.WriteLine ("Sending command: " + cmd);
 
             Client.WriteLine (cmd);
-
         }
 
         public void CheckConnected ()
