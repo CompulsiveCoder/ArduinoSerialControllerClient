@@ -17,7 +17,7 @@ BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 VERSION=$(cat version.txt)
 BUILD_NUMBER=$(cat buildnumber.txt)
 
-FULL_VERSION=$VERSION.$BUILD_NUMBER
+FULL_VERSION=$VERSION-$BUILD_NUMBER
 
 if [ "$BRANCH" = "dev" ]
 then
