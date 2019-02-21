@@ -1,2 +1,7 @@
+DIR=$PWD
+
 cd lib
-mono nuget.exe setApiKey $1
+sh get-nuget.sh
+cd $DIR
+
+mono lib/nuget.exe setApiKey -verbosity quiet $1
