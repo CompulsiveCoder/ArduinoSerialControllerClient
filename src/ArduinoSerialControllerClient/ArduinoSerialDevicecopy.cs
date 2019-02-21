@@ -35,13 +35,13 @@ namespace ArduinoSerialControllerClient
             
             Client.WriteLine (cmd);
 
-            Thread.Sleep (1000);
+            var output = Client.ReadLine ().Trim ();
 
-            var output = Client.Read ();
+            var digitalValue = 0;
+            if (!Int32.TryParse (output, out digitalValue))
+                throw new Exception ("Failed to convert digital pin value: " + output);
 
-            var digitalValue = Convert.ToInt32 (output.Trim ()) == 1;
-
-            return digitalValue;
+            return digitalValue == 1;
         }
 
         public int AnalogRead (int pinNumber)
@@ -50,11 +50,11 @@ namespace ArduinoSerialControllerClient
             
             Client.WriteLine (cmd);
 
-            Thread.Sleep (1000);
+            var output = Client.ReadLine ().Trim ();
 
-            var output = Client.Read ();
-
-            var analogValue = Convert.ToInt32 (output.Trim ());
+            var analogValue = 0;
+            if (!Int32.TryParse (output, out analogValue))
+                throw new Exception ("Failed to convert analog pin value: " + output);
 
             return analogValue;
         }
