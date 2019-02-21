@@ -57,7 +57,7 @@ pipeline {
             when { expression { !shouldSkipBuild() } }
             steps {
                 sh 'sh nuget-pack.sh'
-                shHide( 'sh nuget-set-api-key.sh ${NUGETTOKEN}' )
+                shHide( 'sh nuget-set-api-key.sh $NUGETTOKEN' )
                 sh 'sh nuget-push.sh'
             }
         }
