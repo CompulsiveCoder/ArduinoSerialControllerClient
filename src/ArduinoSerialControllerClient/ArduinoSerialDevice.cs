@@ -20,6 +20,9 @@ namespace ArduinoSerialControllerClient
             Client.Open ();
 
             IsConnected = true;
+
+            // Read the first line (the title) to clear the buffer
+            Client.ReadLine ();
         }
 
         public void Disconnect ()
