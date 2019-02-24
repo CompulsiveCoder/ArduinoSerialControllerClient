@@ -10,6 +10,10 @@ namespace ArduinoSerialControllerClient
 
         public bool IsConnected = false;
 
+        public string ArduinoSerialControllerSketchTitle = "ArduinoSerialController";
+
+        public bool IsDebug = false;
+
         public ArduinoSerialDevice (string portName, int baudRate)
         {
             Client = new SerialClient (portName, baudRate);
@@ -38,7 +42,10 @@ namespace ArduinoSerialControllerClient
 
             Client.WriteLine (cmd);
 
-            var output = Client.ReadLine ().Trim ();
+            var output = String.Empty;
+            while (output == String.Empty || output == ArduinoSerialControllerSketchTitle) {
+                output = Client.ReadLine ().Trim ();
+            }
 
             var digitalValue = 0;
             if (!Int32.TryParse (output, out digitalValue))
@@ -53,7 +60,10 @@ namespace ArduinoSerialControllerClient
 
             Client.WriteLine (cmd);
 
-            var output = Client.ReadLine ().Trim ();
+            var output = String.Empty;
+            while (output == String.Empty || output == ArduinoSerialControllerSketchTitle) {
+                output = Client.ReadLine ().Trim ();
+            }
 
             var analogValue = 0;
             if (!Int32.TryParse (output, out analogValue))
@@ -80,15 +90,18 @@ namespace ArduinoSerialControllerClient
         {
             CheckConnected ();
 
-            Console.WriteLine ("Analog writing percentage: " + value);
+            if (IsDebug)
+                Console.WriteLine ("Analog writing percentage: " + value);
 
             var pwmValue = ArduinoConvert.PercentageToPWM (value);
 
-            Console.WriteLine ("Converted PWM value: " + pwmValue);
+            if (IsDebug)
+                Console.WriteLine ("Converted PWM value: " + pwmValue);
 
             var cmd = String.Format ("A{0}:{1}", pinNumber, pwmValue);
-            
-            Console.WriteLine ("Sending command: " + cmd);
+
+            if (IsDebug)
+                Console.WriteLine ("Sending command: " + cmd);
             
             Client.WriteLine (cmd);
         }
@@ -97,13 +110,16 @@ namespace ArduinoSerialControllerClient
         {
             CheckConnected ();
 
-            Console.WriteLine ("Setting pin mode...");
-            Console.WriteLine ("  Pin number: " + pinNumber);
-            Console.WriteLine ("  Pin mode: " + pinMode.ToString ());
+            if (IsDebug) {
+                Console.WriteLine ("Setting pin mode...");
+                Console.WriteLine ("  Pin number: " + pinNumber);
+                Console.WriteLine ("  Pin mode: " + pinMode.ToString ());
+            }
 
             var cmd = String.Format ("M{0}:{1}", pinNumber, (int)pinMode);
 
-            Console.WriteLine ("Sending command: " + cmd);
+            if (IsDebug)
+                Console.WriteLine ("Sending command: " + cmd);
 
             Client.WriteLine (cmd);
 
