@@ -20,9 +20,9 @@ PACKAGE_FILE_EXT="$PACKAGE_NAME.$PACKAGE_VERSION.nupkg"
 echo "Package file: $PACKAGE_FILE"
 
 if [ ! -d "$PACKAGE_FILE" ]; then
-	wget -q "https://github.com/GreenSense/libs/raw/master/$PACKAGE_FILE.nupkg" -O $PACKAGE_FILE_EXT
+	wget -q "https://github.com/GreenSense/libs/raw/master/$PACKAGE_FILE.zip" -O $PACKAGE_FILE_EXT || exit 1
 
-	unzip -o "$PACKAGE_FILE_EXT" -d "$PACKAGE_FILE/"
+	unzip -o "$PACKAGE_FILE_EXT" -d "$PACKAGE_FILE/" || exit 1
 else
 	echo "$PACKAGE_FILE library already exists. Skipping download."
 fi
